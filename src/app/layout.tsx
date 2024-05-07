@@ -6,6 +6,8 @@ import Footer from "@/partials/Footer";
 import Header from "@/partials/Header";
 import Providers from "@/partials/Providers";
 import "@/styles/main.scss";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 export default function RootLayout({
   children,

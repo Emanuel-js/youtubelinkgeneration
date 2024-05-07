@@ -41,8 +41,8 @@ const Header = () => {
     >
       <nav className="navbar container">
         {/* logo */}
-        <div className="order-0">
-          <Logo />
+        <div className="h-1 text-2xl text-white">
+        ኩርማን
         </div>
         {/* navbar toggler */}
         <input id="nav-toggle" type="checkbox" className="hidden" />
@@ -138,26 +138,7 @@ const Header = () => {
             </li>
           )}
         </ul>
-        <div className="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
-          {settings.search && (
-            <button
-              className="border-border text-dark hover:text-primary dark:border-darkmode-border mr-5 inline-block border-r pr-5 text-xl dark:text-white dark:hover:text-darkmode-primary"
-              aria-label="search"
-              data-search-trigger
-            >
-              <IoSearch />
-            </button>
-          )}
-          <ThemeSwitcher className="mr-5" />
-          {navigation_button.enable && (
-            <Link
-              className="btn btn-outline-primary btn-sm hidden lg:inline-block"
-              href={navigation_button.link}
-            >
-              {navigation_button.label}
-            </Link>
-          )}
-        </div>
+
       </nav>
     </header>
   );
