@@ -5,12 +5,12 @@ import { getRandomYouTubeLink } from "@/lib/videomanagment";
 import YouTubePlayer from "./YoutubePlayer";
 
 export const ButtonGen = () => {
-  const [links, setLinks] = useState([]); // Stores YouTube links
+  const [links, setLinks] = useState<any>([]); // Stores YouTube links
   const [currentIndex, setCurrentIndex] = useState(0); // Tracks the current video index
   const [userInput, setUserInput] = useState(""); // To hold the user's input link
   const [showInput, setShowInput] = useState(false); // To toggle input display
   const [fetchDisabled, setFetchDisabled] = useState(false); // Disable fetch button after fetching
-  const [watchTimes, setWatchTimes] = useState([]);
+  const [watchTimes, setWatchTimes] = useState<any>([]);
 
   // Store watch times for each video
 const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +19,7 @@ const [isLoading, setIsLoading] = useState(false);
     try {
       const randomLink = await getRandomYouTubeLink();
       if (randomLink && randomLink.length > 0) {
-        setLinks(prevLinks => [...prevLinks, ...randomLink.map(link => link.url)]);
+        setLinks((prevLinks: any) => [...prevLinks, ...randomLink.map(link => link.url)]);
         setFetchDisabled(true);  // Disable fetch button after fetching links
         setWatchTimes([]);  // Reset watch times
       }
@@ -42,7 +42,7 @@ const [isLoading, setIsLoading] = useState(false);
     }
   };
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (event:any) => {
     setUserInput(event.target.value);
   };
 
@@ -54,8 +54,8 @@ const [isLoading, setIsLoading] = useState(false);
     }
   };
 
-  const handleWatchTime = (time) => {
-    setWatchTimes(prevTimes => [...prevTimes, time]);
+  const handleWatchTime = (time: any) => {
+    setWatchTimes((prevTimes: any) => [...prevTimes, time]);
   };
 
   const minimumWatchTime = watchTimes.length > 0 ? Math.min(...watchTimes) : 0;
@@ -82,7 +82,7 @@ const [isLoading, setIsLoading] = useState(false);
             <div className="my-16">
               <YouTubePlayer
                 url={links[currentIndex]}
-                onWatchTime={(time) => console.log(time)}
+                onWatchTime={(time:any) => console.log(time)}
               />
             </div>
 
@@ -107,3 +107,7 @@ const [isLoading, setIsLoading] = useState(false);
     </div>
   );
 };
+function saveLinkToCollection(userInput: string) {
+  throw new Error("Function not implemented.");
+}
+

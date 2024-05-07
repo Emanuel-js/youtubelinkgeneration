@@ -9,9 +9,7 @@ import SeoMeta from "@/partials/SeoMeta";
 import {  Button, Feature } from "@/types";
 
 
-import {YouTubeLinkDisplay,getRandomYouTubeLink} from "@/lib/videomanagment";
 import { ButtonGen } from "@/content/button";
-import YouTubePlayer from "@/content/YoutubePlayer";
 
 const Home = () => {
   const homepage = getListPage("homepage/_index.md");
