@@ -11,6 +11,7 @@ export const ButtonGen = () => {
   const [showInput, setShowInput] = useState(false); // To toggle input display
   const [fetchDisabled, setFetchDisabled] = useState(false); // Disable fetch button after fetching
   const [watchTimes, setWatchTimes] = useState<any>([]);
+  const [isDone,setIsDone]=useState(false?? localStorage.getItem('isDone'));
 
   // Store watch times for each video
 const [isLoading, setIsLoading] = useState(false);
@@ -60,6 +61,14 @@ const [isLoading, setIsLoading] = useState(false);
 
   const minimumWatchTime = watchTimes.length > 0 ? Math.min(...watchTimes) : 0;
 
+
+  const handleDone=()=>{
+    setIsDone(
+      !isDone
+    );
+    localStorage.setItem('isDone',isDone.toString());
+  }
+
   return (
     <div className="">
       <div className="flex justify-center">
@@ -75,9 +84,14 @@ const [isLoading, setIsLoading] = useState(false);
             Next Video
           </button>
         )}
+         { currentIndex ==4 && (
+          <button className="btn btn-secondary py-20" onClick={handleDone}>
+            Done
+          </button>
+        )}
       </div>
       <div className="flex  justify-center mt-20">
-        {links.length > 0 && currentIndex < links.length && (
+        {links.length > 0 && currentIndex < links.length && !isDone && (
           <div className="">
             <div className="my-16">
               <YouTubePlayer
@@ -92,7 +106,7 @@ const [isLoading, setIsLoading] = useState(false);
           </div>
         )}
 
-        {showInput && (
+        {isDone && (
           <div>
             <input
               type="text"
